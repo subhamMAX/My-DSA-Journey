@@ -1,0 +1,120 @@
+📘 Exception Handling in Java
+🔹 What is an Exception?
+
+Exception: An unwanted or unexpected event that disrupts the normal flow of a program.
+
+Example:
+
+Division by zero
+
+File not found
+
+Array index out of bounds
+
+🔹 Types of Errors
+
+Compile-time Errors → Syntax errors, missing semicolon, etc.
+
+Runtime Errors (Exceptions) → Occur during program execution.
+
+Logical Errors → Wrong output due to incorrect logic.
+
+🔹 Exception Hierarchy
+Object
+ └── Throwable
+      ├── Error (serious problems, not recoverable)
+      └── Exception
+           ├── Checked Exceptions (compile-time)
+           └── Unchecked Exceptions (runtime)
+
+
+Checked Exceptions → Must be handled at compile time (e.g., IOException, SQLException).
+
+Unchecked Exceptions → Occur at runtime, not checked by compiler (e.g., ArithmeticException, NullPointerException).
+
+🔹 Keywords in Exception Handling
+
+try – Block of code to monitor for exceptions.
+
+catch – Handles the exception.
+
+finally – Block that always executes (cleanup code).
+
+throw – Used to explicitly throw an exception.
+
+throws – Declares exceptions a method can throw.
+
+🔹 Syntax
+try {
+    // Code that may cause exception
+} catch (ExceptionType e) {
+    // Handling code
+} finally {
+    // Always executed (optional)
+}
+
+🔹 Example
+public class Example {
+    public static void main(String[] args) {
+        try {
+            int a = 10 / 0; // ArithmeticException
+        } catch (ArithmeticException e) {
+            System.out.println("Cannot divide by zero!");
+        } finally {
+            System.out.println("Finally block always executes.");
+        }
+    }
+}
+
+
+Output:
+
+Cannot divide by zero!
+Finally block always executes.
+
+🔹 Multiple Catch Blocks
+try {
+    int arr[] = new int[5];
+    arr[6] = 10;
+} catch (ArithmeticException e) {
+    System.out.println("Arithmetic Error");
+} catch (ArrayIndexOutOfBoundsException e) {
+    System.out.println("Array Index Error");
+} catch (Exception e) {
+    System.out.println("General Exception");
+}
+
+🔹 throw vs throws
+
+throw → Used to explicitly throw an exception.
+
+throws → Used in method declaration to specify exceptions.
+
+void myMethod() throws IOException {
+    throw new IOException("File error");
+}
+
+🔹 User-defined Exception
+class MyException extends Exception {
+    public MyException(String msg) {
+        super(msg);
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        try {
+            throw new MyException("Custom Exception Occurred!");
+        } catch (MyException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+🔹 Best Practices
+
+Don’t use exceptions for normal flow control.
+
+Always clean up resources in finally or use try-with-resources.
+
+Catch specific exceptions instead of using a general Exception.
