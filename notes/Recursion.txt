@@ -1,0 +1,92 @@
+📘 Recursion in Java – Theory
+🔹 Definition
+
+Recursion is a programming technique where a method calls itself directly or indirectly to solve a problem.
+The problem is broken down into smaller sub-problems until a base condition is reached.
+
+🔹 Key Components of Recursion
+
+Base Case
+
+The stopping condition of recursion.
+
+Without it, recursion will run infinitely and cause StackOverflowError.
+
+Recursive Case
+
+The part where the method calls itself with smaller input.
+
+Moves the program toward the base case.
+
+🔹 Types of Recursion
+
+Direct Recursion
+
+A method calls itself directly.
+Example:
+
+void method() {
+    method();  // direct recursive call
+}
+
+
+Indirect Recursion
+
+A method calls another method, which again calls the first method.
+Example:
+
+void methodA() {
+    methodB();
+}
+void methodB() {
+    methodA();
+}
+
+
+Tail Recursion
+
+Recursive call is the last statement in the method.
+
+Easier to optimize.
+Example: Factorial using tail recursion.
+
+Non-Tail Recursion
+
+Recursive call is not the last statement; extra work is done after the call.
+Example: Fibonacci sequence.
+
+🔹 Flow of Execution
+
+When recursion happens:
+
+Each recursive call is placed on the call stack.
+
+When the base case is reached, results are returned back one by one (unwinding the stack).
+
+Example (factorial 3):
+
+factorial(3)
+  → factorial(2)
+      → factorial(1)  // base case
+
+🔹 Advantages of Recursion
+
+Code is simpler and more readable.
+
+Natural fit for problems like:
+
+Tree traversal
+
+Graph traversal
+
+Divide and Conquer (Merge Sort, Quick Sort)
+
+Mathematical series (Factorial, Fibonacci, etc.)
+
+🔹 Disadvantages
+
+More memory usage (stack frames).
+
+Slower compared to iteration in simple problems.
+
+Risk of StackOverflowError if recursion depth is too large.
